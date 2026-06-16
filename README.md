@@ -1,12 +1,12 @@
-# KTP NCNN Detection Kit
+# KTP NCNN Detector
 
-Lightweight KTP detector package using an NCNN FP16 model. This repository is structured as reusable libraries plus runnable samples:
+KTP detector using NCNN. Isi repo:
 
 - `android/library`: Android AAR library with JNI + NCNN.
 - `android/sample`: simple live camera Android sample.
-- `web`: WASM library wrapper and browser sample for camera/upload.
+- `web`: browser sample for camera/upload.
 - `cli`: native command line detector for marking and cropping detections.
-- `model`: shared FP16 NCNN model files.
+- `model`: NCNN model files.
 
 The bundled model detects one class: `ktp`. Input size is `160x160`.
 
@@ -53,7 +53,7 @@ for (KtpDetection det : detections) {
 
 The AAR already contains `ktp.param`, `ktp.bin`, and the native `libktp_ncnn.so`. Apps only need camera permission if they use live camera input.
 
-## Web WASM Library
+## Web
 
 Serve the `web` folder from any static server:
 
@@ -62,9 +62,9 @@ cd web
 python3 -m http.server 8000
 ```
 
-Open `http://127.0.0.1:8000`. The sample supports camera and image upload, and uses only the FP16 model.
+Open `http://127.0.0.1:8000`. The sample supports camera and image upload.
 
-Use the WASM wrapper in another browser project:
+Use it in another browser project:
 
 ```html
 <script src="/ncnn/ktp_ncnn_fp16.js"></script>
@@ -83,7 +83,7 @@ Use the WASM wrapper in another browser project:
 </script>
 ```
 
-Files needed for another web project:
+Files for another web project:
 
 - `web/ktp-detector.js`
 - `web/ncnn/ktp_ncnn_fp16.js`
@@ -116,19 +116,19 @@ Run detection, draw a marked image, and crop the best KTP:
   --crop ktp-crop.jpg
 ```
 
-The second argument is the model directory containing `ktp_fp16.ncnn.param` and `ktp_fp16.ncnn.bin`.
+The second argument is the model directory containing the NCNN param and bin files.
 
-## GitHub Actions
+## Build Otomatis
 
-The workflow in `.github/workflows/build-release-pages.yml` does this automatically:
+Repo ini juga menyiapkan build otomatis:
 
 - builds Android AAR and sample APK;
-- zips the Web WASM package;
+- zips the web sample;
 - uploads build artifacts;
 - publishes `web/` to GitHub Pages on `main`;
-- attaches AAR/APK/Web ZIP to GitHub Releases when pushing a tag like `v1.0.0`.
+- attaches AAR/APK/Web ZIP to Releases when pushing a tag like `v1.0.0`.
 
-Before enabling Pages, set repository Pages source to `GitHub Actions`.
+Pages source should use workflow mode.
 
 ## License Note
 
