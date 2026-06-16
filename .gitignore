@@ -1,0 +1,15 @@
+.DS_Store
+build/
+.cxx/
+dist/
+.gradle/
+android/.gradle/
+android/build/
+android/*/build/
+android/**/.cxx/
+android/ncnn-android/
+cli/build/
+*.apk
+*.aar
+*.idsig
+local.properties

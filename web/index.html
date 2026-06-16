@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KTP NCNN WASM</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <strong>KTP NCNN WASM</strong>
+        <span id="status">Loading model</span>
+      </header>
+
+      <section class="stage">
+        <video id="video" playsinline muted></video>
+        <canvas id="canvas"></canvas>
+      </section>
+
+      <section class="controls">
+        <button id="cameraBtn" type="button">Start Camera</button>
+        <button id="stopBtn" type="button" disabled>Stop</button>
+        <label>
+          Upload
+          <input id="fileInput" type="file" accept="image/*" />
+        </label>
+      </section>
+
+      <p id="result">Ready.</p>
+    </main>
+
+    <script src="./ncnn/ktp_ncnn_fp16.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
